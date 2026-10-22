@@ -1,0 +1,23 @@
+{
+  "name": "clean-architecture-marketplace",
+  "private": true,
+  "description": "Учебный пример: маркетплейс на NestJS по принципам Clean / Hexagonal Architecture",
+  "type": "module",
+  "workspaces": [
+    "services/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm test --workspaces --if-present",
+    "lint": "eslint .",
+    "start:all": "npm run build && concurrently --names basket,discount,warehouse,delivery --prefix-colors blue,magenta,yellow,green \"npm start -w services/basket\" \"npm start -w services/discount\" \"npm start -w services/warehouse\" \"npm start -w services/delivery\""
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "concurrently": "^10.0.6",
+    "eslint": "^10.13.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^5.0.5"
+  }
+}
